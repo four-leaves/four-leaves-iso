@@ -1,0 +1,1 @@
+En caso de no poder instalar el programa [archiso](https://wiki.archlinux.org/index.php/Archiso), puede guardar la imagen [ArchTeXlive](https://sourceforge.net/projects/archtexlive/) en un usb (de preferencia de 8GB o más de almacenamiento) y ejecutar siempre con usuario `root`.
