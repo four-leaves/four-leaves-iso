@@ -76,6 +76,74 @@ Total Installed Size:  5.46 MiB
 ==> Creating gzip-compressed initcpio image: /boot/initramfs-linux-fallback.img
 ==> Image generation successful
 ```
+
+Estructura del directorio `/usr/share/archiso`
+----------------------------------------------
+
+> Consejo:
+> 
+> Use la extensión [octotree](https://www.octotree.io) para visualizar los subdirectorios en la página del repositorio.
+
+```
+archiso
+└── configs
+    ├── baseline
+    │   ├── build.sh
+    │   ├── isolinux
+    │   │   └── isolinux.cfg
+    │   ├── mkinitcpio.conf
+    │   └── syslinux
+    │       └── syslinux.cfg
+    └── releng
+        ├── airootfs
+        │   ├── etc
+        │   │   ├── fstab
+        │   │   ├── hostname
+        │   │   ├── locale.conf
+        │   │   ├── machine-id
+        │   │   ├── modprobe.d
+        │   │   │   └── broadcom-wl.conf
+        │   │   ├── systemd
+        │   │   │   ├── scripts
+        │   │   │   │   └── choose-mirror
+        │   │   │   └── system
+        │   │   │       ├── choose-mirror.service
+        │   │   │       ├── etc-pacman.d-gnupg.mount
+        │   │   │       ├── getty@tty1.service.d
+        │   │   │       │   └── autologin.conf
+        │   │   │       └── pacman-init.service
+        │   │   └── udev
+        │   │       └── rules.d
+        │   │           └── 81-dhcpcd.rules
+        │   └── root
+        │       ├── customize_airootfs.sh
+        │       └── install.txt
+        ├── build.sh
+        ├── efiboot
+        │   └── loader
+        │       ├── entries
+        │       │   ├── archiso-x86_64-cd.conf
+        │       │   ├── archiso-x86_64-usb.conf
+        │       │   ├── uefi-shell-v1-x86_64.conf
+        │       │   └── uefi-shell-v2-x86_64.conf
+        │       └── loader.conf
+        ├── isolinux
+        │   └── isolinux.cfg
+        ├── mkinitcpio.conf
+        ├── packages.x86_64
+        ├── pacman.conf
+        └── syslinux
+            ├── archiso.cfg
+            ├── archiso_head.cfg
+            ├── archiso_pxe.cfg
+            ├── archiso_sys.cfg
+            ├── archiso_tail.cfg
+            ├── splash.png
+            └── syslinux.cfg
+
+20 directories, 34 files
+```
+
 Ejemplo del archivo `pacman.conf`
 ---------------------------------
 
