@@ -106,11 +106,15 @@ archiso
 20 directories
 ```
 
-> Consejo:
+> **Consejo**:
 > 
-> Use la extensión [octotree](https://www.octotree.io) para visualizar los subdirectorios en la página del repositorio.
+> Use la extensión [octotree](https://www.octotree.io) para visualizar
+> los subdirectorios en la página del repositorio.
 
-Nos enfocaremos en estudiar el perfil releng en `archiso/configs/releng`.
+Nos enfocaremos en estudiar el perfil `releng` que está en `archiso/configs/releng`.
+Como vimos en el diagrama de árbol de arriba, este comprendo cuatro
+directorios: `airootfs`, `efiboot`, `isolinux`, `syslinux`. Veamos
+ahora en más detalle junto con los archivos contenidos allá.
 
 ```
 releng
