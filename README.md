@@ -109,8 +109,8 @@ archiso
 > Consejo:
 > 
 > Use la extensión [octotree](https://www.octotree.io) para visualizar los subdirectorios en la página del repositorio.
-Ejemplo del archivo `pacman.conf`
 
+Ejemplo del archivo `pacman.conf`
 ---------------------------------
 
 ```
