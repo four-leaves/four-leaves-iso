@@ -1,5 +1,5 @@
-Four Leaves
-===========
+Four Leaves ISO
+===============
 
 En caso de no poder instalar el programa [archiso](https://wiki.archlinux.org/index.php/Archiso),
 puede guardar la imagen [ArchTeXlive](https://sourceforge.net/projects/archtexlive/)
@@ -112,8 +112,8 @@ archiso
 > los subdirectorios en la página del repositorio.
 
 Nos enfocaremos en estudiar el perfil `releng` que está en `archiso/configs/releng`.
-Como vimos en el diagrama de árbol de arriba, este comprendo cuatro
-directorios: `airootfs`, `efiboot`, `isolinux`, `syslinux`. Veamos
+Como vimos en el diagrama de árbol de arriba, este comprende cuatro
+directorios: `airootfs`, `efiboot`, `isolinux` y `syslinux`. Veamos
 ahora en más detalle junto con los archivos contenidos allá.
 
 ```
@@ -166,6 +166,179 @@ releng
 
 15 directories, 30 files
 ```
+
+## `airootfs`
+
+## `efiboot`
+
+## `isolinux`
+
+## `syslinux`
+
+Ejemplo del archivo `packages.x86_64`
+-------------------------------------
+
+```
+arch-install-scripts
+b43-fwcutter
+broadcom-wl
+btrfs-progs
+clonezilla
+crda
+darkhttpd
+ddrescue
+dhclient
+dhcpcd
+dialog
+diffutils
+dmraid
+dnsmasq
+dnsutils
+dosfstools
+elinks
+ethtool
+exfat-utils
+f2fs-tools
+fsarchiver
+gnu-netcat
+gpm
+gptfdisk
+grml-zsh-config
+grub
+hdparm
+ipw2100-fw
+ipw2200-fw
+irssi
+iwd
+jfsutils
+lftp
+linux-atm
+linux-firmware
+lsscsi
+lvm2
+man-db
+man-pages
+mc
+mdadm
+mtools
+nano
+ndisc6
+netctl
+nfs-utils
+nilfs-utils
+nmap
+ntfs-3g
+ntp
+openconnect
+openssh
+openvpn
+partclone
+parted
+partimage
+ppp
+pptpclient
+refind-efi
+reiserfsprogs
+rp-pppoe
+rsync
+sdparm
+sg3_utils
+smartmontools
+sudo
+tcpdump
+testdisk
+usb_modeswitch
+usbutils
+vi
+vim-minimal
+vpnc
+wget
+wireless-regdb
+wireless_tools
+wpa_supplicant
+wvdial
+xfsprogs
+xl2tpd
+```
+
+* [arch-install-scripts](https://git.archlinux.org/arch-install-scripts.git)
+* [b43-fwcutter](https://wireless.wiki.kernel.org/en/users/Drivers/b43)
+* [broadcom-wl](https://www.broadcom.com/support/download-search)
+* [btrfs-progs](https://btrfs.wiki.kernel.org/index.php/Main_Page)
+* [clonezilla](https://clonezilla.org)
+* [crda](https://wireless.wiki.kernel.org/en/developers/regulatory/crda)
+* [darkhttpd](https://unix4lyfe.org/darkhttpd)
+* [ddrescue](https://www.gnu.org/software/ddrescue/ddrescue.html)
+* [dhclient](https://www.isc.org/dhcp)
+* [dhcpcd](https://roy.marples.name/projects/dhcpcd)
+* [dialog](https://invisible-island.net/dialog)
+* [diffutils](https://www.gnu.org/software/diffutils)
+* [dmraid](https://people.redhat.com/~heinzm/sw/dmraid)
+* [dnsmasq](http://www.thekelleys.org.uk/dnsmasq/doc.html)
+* [dnsutils](https://www.isc.org/bind)
+* [dosfstools](https://github.com/dosfstools/dosfstools)
+* [elinks](http://elinks.or.cz)
+* [ethtool](https://mirrors.edge.kernel.org/pub/software/network/ethtool)
+* [exfat-utils](https://github.com/relan/exfat)
+* [f2fs-tools](https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git/about)
+* [fsarchiver](http://www.fsarchiver.org)
+* [gnu-netcat](http://netcat.sourceforge.net)
+* [gpm](https://www.nico.schottelius.org/software/gpm)
+* [gptfdisk](https://www.rodsbooks.com/gdisk)
+* [grml-zsh-config](https://grml.org/zsh)
+* [grub](https://www.gnu.org/software/grub/)
+* [hdparm](https://sourceforge.net/projects/hdparm)
+* [ipw2100-fw](http://ipw2100.sourceforge.net)
+* [ipw2200-fw](http://ipw2200.sourceforge.net)
+* [irssi](https://irssi.org)
+* [iwd](https://git.kernel.org/pub/scm/network/wireless/iwd.git)
+* [jfsutils](http://jfs.sourceforge.net)
+* [lftp](https://lftp.yar.ru)
+* [linux-atm](http://linux-atm.sourceforge.net)
+* [linux-firmware](https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git)
+* [lsscsi](http://sg.danny.cz/scsi/lsscsi.html)
+* [lvm2](https://sourceware.org/lvm2)
+* [man-db](https://www.nongnu.org/man-db)
+* [man-pages](http://man7.org/linux/man-pages/index.html)
+* [mc](https://midnight-commander.org)
+* [mdadm](https://git.kernel.org/pub/scm/utils/mdadm)
+* [mtools](https://www.gnu.org/software/mtools)
+* [nano](https://www.nano-editor.org)
+* [ndisc6](https://www.remlab.net/ndisc6)
+* [netctl](https://git.archlinux.org/netctl.git)
+* [nfs-utils](http://nfs.sourceforge.net)
+* [nilfs-utils](https://nilfs.sourceforge.io/en)
+* [nmap](https://nmap.org)
+* [ntfs-3g](https://www.tuxera.com/community/open-source-ntfs-3g)
+* [ntp](http://www.ntp.org)
+* [openconnect](https://www.infradead.org/openconnect)
+* [openssh]()
+* [openvpn](https://openvpn.net/community)
+* [partclone](https://partclone.org)
+* [ppp](https://ppp.samba.org)
+* [pptpclient](http://pptpclient.sourceforge.net)
+* [refind-efi](https://www.rodsbooks.com/refind/index.html)
+* [reiserfsprogs](https://reiser4.wiki.kernel.org/index.php/Reiserfsprogs)
+* [rp-pppoe](https://dianne.skoll.ca/projects/rp-pppoe)
+* [rsync](https://rsync.samba.org)
+* [sdparm](http://sg.danny.cz/sg/sdparm.html)
+* [sg3_utils](http://sg.danny.cz/sg/sg3_utils.html)
+* [smartmontools](https://www.smartmontools.org)
+* [sudo](https://www.sudo.ws/sudo)
+* [tcpdump](https://www.tcpdump.org)
+* [testdisk](https://www.cgsecurity.org/wiki/TestDisk)
+* [usb_modeswitch](https://www.draisberghof.de/usb_modeswitch)
+* [usbutils](http://linux-usb.sourceforge.net)
+* [vi](http://ex-vi.sourceforge.net)
+* [vim-minimal](https://www.vim.org)
+* [vpnc](https://github.com/streambinder/vpnc)
+* [wget](https://www.gnu.org/software/wget/wget.html)
+* [wireless-regdb](https://wireless.wiki.kernel.org/en/developers/regulatory)
+* [wireless_tools](https://hewlettpackard.github.io/wireless-tools/Tools.html)
+* [wpa_supplicant](https://hostap.epitest.fi/wpa_supplicant)
+* [wvdial](https://web.archive.org/web/20110504183753/http://alumnit.ca:80/wiki/index.php?page=WvDial)
+* [xfsprogs](https://xfs.org/index.php/Main_Page)
+* [xl2tpd](https://www.xelerance.com/archives/202)
 
 Ejemplo del archivo `pacman.conf`
 ---------------------------------
