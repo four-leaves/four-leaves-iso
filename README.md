@@ -1,10 +1,12 @@
 Four Leaves ISO
 ===============
 
+![](syslinux/splash-fourleaves.png)
+
 En caso de no poder instalar el programa [archiso](https://wiki.archlinux.org/index.php/Archiso),
 puede guardar la imagen [ArchTeXlive](https://sourceforge.net/projects/archtexlive/)
-en un usb (de preferencia de 8GB o más de almacenamiento) y ejecutar
-siempre con usuario `root`.
+en una memoria USB (de preferencia de 8GB o más de almacenamiento) y ejecutar
+siempre como usuario `root`.
 
 Instalación de la herramienta `archiso`
 ---------------------------------------
@@ -444,3 +446,49 @@ Include = /etc/pacman.d/mirrorlist
 #SigLevel = Optional TrustAll
 #Server = file:///home/custompkgs
 ```
+
+# Comunicaciones
+
+[realvnc-vnc-viewer 6.20.113-3](https://aur.archlinux.org/packages/realvnc-vnc-viewer) 7.60MiB
+[yay](https://github.com/Jguer/yay) 6.26MiB
+[telegram-desktop](https://www.archlinux.org/packages/community/x86_64/telegram-desktop) 43.41MiB
+[texlive-fontsextra](https://www.archlinux.org/packages/extra/any/texlive-fontsextra) 1202.02MiB
+[linux-firmware](https://www.archlinux.org/packages/core/any/linux-firmware) 514.04MiB
+[rstudio-desktop-bin](https://aur.archlinux.org/packages/rstudio-desktop-bin) 487.40MiB
+[racket](https://www.archlinux.org/packages/community/x86_64/racket) 457.36MiB
+[sagemath](https://www.archlinux.org/packages/community/x86_64/sagemath) 416.59MiB
+[texlive-core](https://www.archlinux.org/packages/extra/any/texlive-core) 396.52MiB
+[miniconda3](https://aur.archlinux.org/packages/miniconda3) 387.19MiB
+[docker](https://www.archlinux.org/packages/community/x86_64/docker) 264.44MiB
+[vscodium-bin](https://aur.archlinux.org/packages/vscodium-bin) 238.55MiB
+[firefox](https://www.archlinux.org/packages/extra/x86_64/firefox) 187.79MiB
+[julia](https://www.archlinux.org/packages/community/x86_64/julia) 198.22MiB
+[fricas](https://aur.archlinux.org/packages/fricas) 145.99MiB
+[mongodb-bin](https://aur.archlinux.org/packages/mongodb-bin) 128.49MiB
+[inkscape](https://www.archlinux.org/packages/extra/x86_64/inkscape) 124.00MiB
+[emacs-lucid](https://aur.archlinux.org/packages/emacs-lucid) 126.96MiB
+[mongodb-tools-bin](https://aur.archlinux.org/packages/mongodb-tools-bin) 85.91MiB
+[noto-fonts](https://www.archlinux.org/packages/extra/any/noto-fonts) 91.19MiB
+[octave](https://www.archlinux.org/packages/community/x86_64/octave) 65.52MiB
+[openboard](https://aur.archlinux.org/packages/openboard) 56.60MiB
+[cmake](https://www.archlinux.org/packages/extra/x86_64/cmake) 39.25MiB
+[git](https://www.archlinux.org/packages/extra/x86_64/git) 38.36MiB
+[intel-media-driver](https://www.archlinux.org/packages/community/x86_64/intel-media-driver) 34.99MiB
+[grub](https://www.archlinux.org/packages/core/x86_64/grub) 32.53MiB
+[zathura-djvu](https://www.archlinux.org/packages/community/x86_64/zathura-djvu) 27.23KiB
+[zathura-pdf-poppler](https://www.archlinux.org/packages/community/x86_64/zathura-pdf-poppler) 23.22KiB
+[ttf-monaco](https://aur.archlinux.org/packages/ttf-monaco) 79.00KiB
+[zathura](https://www.archlinux.org/packages/community/x86_64/zathura) 563.38KiB
+[rar](https://aur.archlinux.org/packages/rar) 1185.71KiB
+[curl](https://www.archlinux.org/packages/core/x86_64/curl) 1647.57KiB
+[ttf-ms-fonts](https://aur.archlinux.org/packages/ttf-ms-fonts) 5.42MiB
+[mathpix-snipping-tool](https://aur.archlinux.org/packages/mathpix-snipping-tool) 5.13MiB
+[openssh](https://www.archlinux.org/packages/core/x86_64/openssh) 5.20MiB
+[obs-studio](https://www.archlinux.org/packages/community/x86_64/obs-studio) 13.48MiB
+[networkmanager](https://www.archlinux.org/packages/extra/x86_64/networkmanager) 15.36MiB
+[r](https://www.archlinux.org/packages/extra/x86_64/r) 61.81MiB
+https://aur.archlinux.org/packages/cadabra2
+7.95 MiB cadabra2 http://cadabra.science
+easystroke 1425.62 KiB http://easystroke.sourceforge.net/
+anki 29.01 MiB https://ankisrs.net
+github-desktop-bin 224.86 MiB https://desktop.github.com
