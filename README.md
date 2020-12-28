@@ -1,111 +1,42 @@
 Four Leaves ISO
 ===============
 
-![](syslinux/splash-fourleaves.png)
+<div align="center">
+  <img alt="LaTeX" height="124px" vspace="" hspace="25" src="syslinux/splash-fourleaves.png">
+</div>
 
-En caso de no poder instalar el programa [archiso](https://wiki.archlinux.org/index.php/Archiso),
-puede guardar la imagen [ArchTeXlive](https://sourceforge.net/projects/archtexlive/)
-en una memoria USB (de preferencia de 8GB o más de almacenamiento) y ejecutar
-siempre como usuario `root`.
+Esta imagen debe [copiarse](https://github.com/jsamr/bootiso) en una memoria USB
+(de preferencia de 8GB o más de almacenamiento).
 
-Instalación de la herramienta `archiso`
----------------------------------------
+Instalación de la herramienta [`archiso`](https://gitlab.archlinux.org/archlinux/archiso)
+-----------------------------------------------------------------------------------------
 
 ```console
 ~ » yay -Sy archiso
-:: Synchronizing package databases...
- core is up to date
- extra is up to date
- community is up to date
- multilib is up to date
-resolving dependencies...
-looking for conflicting packages...
-
-Package (4)                 New Version  Net Change  Download Size
-
-extra/arch-install-scripts  23-1           0.04 MiB       0.01 MiB
-extra/lynx                  2.8.9-2        4.99 MiB       1.14 MiB
-community/squashfs-tools    4.4-1          0.31 MiB       0.11 MiB
-extra/archiso               43-1           0.12 MiB       0.07 MiB
-
-Total Download Size:   1.33 MiB
-Total Installed Size:  5.46 MiB
-
-:: Proceed with installation? [Y/n] y
-:: Retrieving packages...
- arch-install-scripts-23-1-any                                                13.8 KiB  4.49 MiB/s 00:00 [##############################################################] 100%
- lynx-2.8.9-2-x86_64                                                        1166.6 KiB  1716 KiB/s 00:01 [##############################################################] 100%
- archiso-43-1-any                                                             69.7 KiB  2.84 MiB/s 00:00 [##############################################################] 100%
- squashfs-tools-4.4-1-x86_64                                                 108.7 KiB  2.41 MiB/s 00:00 [##############################################################] 100%
-(4/4) checking keys in keyring                                                                           [##############################################################] 100%
-(4/4) checking package integrity                                                                         [##############################################################] 100%
-(4/4) loading package files                                                                              [##############################################################] 100%
-(4/4) checking for file conflicts                                                                        [##############################################################] 100%
-(4/4) checking available disk space                                                                      [##############################################################] 100%
-:: Processing package changes...
-(1/4) installing arch-install-scripts                                                                    [##############################################################] 100%
-(2/4) installing squashfs-tools                                                                          [##############################################################] 100%
-(3/4) installing lynx                                                                                    [##############################################################] 100%
-(4/4) installing archiso                                                                                 [##############################################################] 100%
-:: Running post-transaction hooks...
-(1/2) Arming ConditionNeedsUpdate...
-(2/2) Updating linux initcpios...
-==> Building image from preset: /etc/mkinitcpio.d/linux.preset: 'default'
-  -> -k /boot/vmlinuz-linux -c /etc/mkinitcpio.conf -g /boot/initramfs-linux.img
-==> Starting build: 5.6.3-arch1-1
-  -> Running build hook: [base]
-  -> Running build hook: [udev]
-  -> Running build hook: [autodetect]
-  -> Running build hook: [modconf]
-  -> Running build hook: [block]
-  -> Running build hook: [filesystems]
-  -> Running build hook: [keyboard]
-  -> Running build hook: [fsck]
-==> Generating module dependencies
-==> Creating gzip-compressed initcpio image: /boot/initramfs-linux.img
-==> Image generation successful
-==> Building image from preset: /etc/mkinitcpio.d/linux.preset: 'fallback'
-  -> -k /boot/vmlinuz-linux -c /etc/mkinitcpio.conf -g /boot/initramfs-linux-fallback.img -S autodetect
-==> Starting build: 5.6.3-arch1-1
-  -> Running build hook: [base]
-  -> Running build hook: [udev]
-  -> Running build hook: [modconf]
-  -> Running build hook: [block]
-  -> Running build hook: [filesystems]
-  -> Running build hook: [keyboard]
-  -> Running build hook: [fsck]
-==> Generating module dependencies
-==> Creating gzip-compressed initcpio image: /boot/initramfs-linux-fallback.img
-==> Image generation successful
 ```
 
-Estructura del directorio `/usr/share/archiso`
-----------------------------------------------
+Estructura del directorio `/usr/share/archiso/configs`
+------------------------------------------------------
 
 ```
-archiso
-└── configs
-    ├── baseline
-    │   ├── isolinux
-    │   └── syslinux
-    └── releng
-        ├── airootfs
-        │   ├── etc
-        │   │   ├── modprobe.d
-        │   │   ├── systemd
-        │   │   │   ├── scripts
-        │   │   │   └── system
-        │   │   │       └── getty@tty1.service.d
-        │   │   └── udev
-        │   │       └── rules.d
-        │   └── root
-        ├── efiboot
-        │   └── loader
-        │       └── entries
-        ├── isolinux
-        └── syslinux
-
-20 directories
+├── baseline
+│   ├── airootfs
+│   ├── efiboot
+│   ├── packages.x86_64
+│   ├── pacman.conf
+│   ├── profiledef.sh
+│   └── syslinux
+└── releng
+    ├── airootfs
+    │   ├── etc
+    │   ├── root
+    │   └── usr
+    ├── efiboot
+    ├── packages.x86_64
+    ├── pacman.conf
+    ├── profiledef.sh
+    └── syslinux
+38 directories
 ```
 
 > **Consejo**:
@@ -113,67 +44,103 @@ archiso
 > Use la extensión [octotree](https://www.octotree.io) para visualizar
 > los subdirectorios en la página del repositorio.
 
-Nos enfocaremos en estudiar el perfil `releng` que está en `archiso/configs/releng`.
-Como vimos en el diagrama de árbol de arriba, este comprende cuatro
-directorios: `airootfs`, `efiboot`, `isolinux` y `syslinux`. Veamos
-ahora en más detalle junto con los archivos contenidos allá.
+Nos enfocaremos en estudiar el perfil `releng` que está en `/usr/share/archiso/configs/releng`.
+Como vimos en el diagrama de árbol de arriba, este comprende tres directorios:
+`airootfs`, `efiboot`,  y `syslinux`. Veamos ahora en más detalle junto con los
+archivos contenidos allá.
 
 ```
-releng
 ├── airootfs
 │   ├── etc
-│   │   ├── fstab
 │   │   ├── hostname
 │   │   ├── locale.conf
-│   │   ├── machine-id
+│   │   ├── localtime -> /usr/share/zoneinfo/UTC
+│   │   ├── mkinitcpio.conf
+│   │   ├── mkinitcpio.d
+│   │   │   └── linux.preset
 │   │   ├── modprobe.d
 │   │   │   └── broadcom-wl.conf
+│   │   ├── motd
+│   │   ├── passwd
+│   │   ├── resolv.conf -> /run/systemd/resolve/stub-resolv.conf
+│   │   ├── shadow
+│   │   ├── ssh
+│   │   │   └── sshd_config
 │   │   ├── systemd
-│   │   │   ├── scripts
-│   │   │   │   └── choose-mirror
+│   │   │   ├── journald.conf.d
+│   │   │   │   └── volatile-storage.conf
+│   │   │   ├── logind.conf.d
+│   │   │   │   └── do-not-suspend.conf
+│   │   │   ├── network
+│   │   │   │   ├── 20-ethernet.network
+│   │   │   │   └── 20-wireless.network
 │   │   │   └── system
 │   │   │       ├── choose-mirror.service
+│   │   │       ├── dbus-org.freedesktop.network1.service -> /usr/lib/systemd/system/systemd-networkd.service
+│   │   │       ├── dbus-org.freedesktop.resolve1.service -> /usr/lib/systemd/system/systemd-resolved.service
 │   │   │       ├── etc-pacman.d-gnupg.mount
 │   │   │       ├── getty@tty1.service.d
 │   │   │       │   └── autologin.conf
-│   │   │       └── pacman-init.service
-│   │   └── udev
-│   │       └── rules.d
-│   │           └── 81-dhcpcd.rules
-│   └── root
-│       ├── customize_airootfs.sh
-│       └── install.txt
-├── build.sh
+│   │   │       ├── livecd-alsa-unmuter.service
+│   │   │       ├── livecd-talk.service
+│   │   │       ├── multi-user.target.wants
+│   │   │       │   ├── choose-mirror.service -> ../choose-mirror.service
+│   │   │       │   ├── iwd.service -> /usr/lib/systemd/system/iwd.service
+│   │   │       │   ├── livecd-talk.service -> /etc/systemd/system/livecd-talk.service
+│   │   │       │   ├── pacman-init.service -> ../pacman-init.service
+│   │   │       │   ├── reflector.service -> /usr/lib/systemd/system/reflector.service
+│   │   │       │   ├── systemd-networkd.service -> /usr/lib/systemd/system/systemd-networkd.service
+│   │   │       │   └── systemd-resolved.service -> /usr/lib/systemd/system/systemd-resolved.service
+│   │   │       ├── network-online.target.wants
+│   │   │       │   └── systemd-networkd-wait-online.service -> /usr/lib/systemd/system/systemd-networkd-wait-online.service
+│   │   │       ├── pacman-init.service
+│   │   │       ├── reflector.service.d
+│   │   │       │   └── archiso.conf
+│   │   │       ├── sockets.target.wants
+│   │   │       │   └── systemd-networkd.socket -> /usr/lib/systemd/system/systemd-networkd.socket
+│   │   │       ├── sound.target.wants
+│   │   │       │   └── livecd-alsa-unmuter.service -> ../livecd-alsa-unmuter.service
+│   │   │       └── systemd-networkd-wait-online.service.d
+│   │   │           └── wait-for-only-one-interface.conf
+│   │   └── xdg
+│   │       └── reflector
+│   │           └── reflector.conf
+│   ├── root
+│   │   └── customize_airootfs.sh
+│   └── usr
+│       └── local
+│           ├── bin
+│           │   ├── choose-mirror
+│           │   ├── Installation_guide
+│           │   └── livecd-sound
+│           └── share
+│               └── livecd-sound
+│                   └── asound.conf.in
 ├── efiboot
 │   └── loader
 │       ├── entries
-│       │   ├── archiso-x86_64-cd.conf
-│       │   ├── archiso-x86_64-usb.conf
-│       │   ├── uefi-shell-v1-x86_64.conf
-│       │   └── uefi-shell-v2-x86_64.conf
+│       │   ├── archiso-x86_64-linux.conf
+│       │   └── archiso-x86_64-speech-linux.conf
 │       └── loader.conf
-├── isolinux
-│   └── isolinux.cfg
-├── mkinitcpio.conf
 ├── packages.x86_64
 ├── pacman.conf
+├── profiledef.sh
 └── syslinux
-    ├── archiso.cfg
     ├── archiso_head.cfg
     ├── archiso_pxe.cfg
+    ├── archiso_pxe-linux.cfg
     ├── archiso_sys.cfg
+    ├── archiso_sys-linux.cfg
     ├── archiso_tail.cfg
     ├── splash.png
     └── syslinux.cfg
 
-15 directories, 30 files
+29 directories, 55 files
 ```
 
 ## `airootfs`
 
 ## `efiboot`
-
-## `isolinux`
 
 ## `syslinux`
 
@@ -447,48 +414,101 @@ Include = /etc/pacman.d/mirrorlist
 #Server = file:///home/custompkgs
 ```
 
-# Comunicaciones
+# Paquetes de la versión lite
 
-[realvnc-vnc-viewer 6.20.113-3](https://aur.archlinux.org/packages/realvnc-vnc-viewer) 7.60MiB
-[yay](https://github.com/Jguer/yay) 6.26MiB
-[telegram-desktop](https://www.archlinux.org/packages/community/x86_64/telegram-desktop) 43.41MiB
-[texlive-fontsextra](https://www.archlinux.org/packages/extra/any/texlive-fontsextra) 1202.02MiB
-[linux-firmware](https://www.archlinux.org/packages/core/any/linux-firmware) 514.04MiB
-[rstudio-desktop-bin](https://aur.archlinux.org/packages/rstudio-desktop-bin) 487.40MiB
-[racket](https://www.archlinux.org/packages/community/x86_64/racket) 457.36MiB
-[sagemath](https://www.archlinux.org/packages/community/x86_64/sagemath) 416.59MiB
-[texlive-core](https://www.archlinux.org/packages/extra/any/texlive-core) 396.52MiB
-[miniconda3](https://aur.archlinux.org/packages/miniconda3) 387.19MiB
-[docker](https://www.archlinux.org/packages/community/x86_64/docker) 264.44MiB
-[vscodium-bin](https://aur.archlinux.org/packages/vscodium-bin) 238.55MiB
-[firefox](https://www.archlinux.org/packages/extra/x86_64/firefox) 187.79MiB
-[julia](https://www.archlinux.org/packages/community/x86_64/julia) 198.22MiB
-[fricas](https://aur.archlinux.org/packages/fricas) 145.99MiB
-[mongodb-bin](https://aur.archlinux.org/packages/mongodb-bin) 128.49MiB
-[inkscape](https://www.archlinux.org/packages/extra/x86_64/inkscape) 124.00MiB
-[emacs-lucid](https://aur.archlinux.org/packages/emacs-lucid) 126.96MiB
-[mongodb-tools-bin](https://aur.archlinux.org/packages/mongodb-tools-bin) 85.91MiB
-[noto-fonts](https://www.archlinux.org/packages/extra/any/noto-fonts) 91.19MiB
-[octave](https://www.archlinux.org/packages/community/x86_64/octave) 65.52MiB
-[openboard](https://aur.archlinux.org/packages/openboard) 56.60MiB
-[cmake](https://www.archlinux.org/packages/extra/x86_64/cmake) 39.25MiB
-[git](https://www.archlinux.org/packages/extra/x86_64/git) 38.36MiB
-[intel-media-driver](https://www.archlinux.org/packages/community/x86_64/intel-media-driver) 34.99MiB
-[grub](https://www.archlinux.org/packages/core/x86_64/grub) 32.53MiB
-[zathura-djvu](https://www.archlinux.org/packages/community/x86_64/zathura-djvu) 27.23KiB
-[zathura-pdf-poppler](https://www.archlinux.org/packages/community/x86_64/zathura-pdf-poppler) 23.22KiB
-[ttf-monaco](https://aur.archlinux.org/packages/ttf-monaco) 79.00KiB
-[zathura](https://www.archlinux.org/packages/community/x86_64/zathura) 563.38KiB
-[rar](https://aur.archlinux.org/packages/rar) 1185.71KiB
-[curl](https://www.archlinux.org/packages/core/x86_64/curl) 1647.57KiB
-[ttf-ms-fonts](https://aur.archlinux.org/packages/ttf-ms-fonts) 5.42MiB
-[mathpix-snipping-tool](https://aur.archlinux.org/packages/mathpix-snipping-tool) 5.13MiB
-[openssh](https://www.archlinux.org/packages/core/x86_64/openssh) 5.20MiB
-[obs-studio](https://www.archlinux.org/packages/community/x86_64/obs-studio) 13.48MiB
-[networkmanager](https://www.archlinux.org/packages/extra/x86_64/networkmanager) 15.36MiB
-[r](https://www.archlinux.org/packages/extra/x86_64/r) 61.81MiB
-https://aur.archlinux.org/packages/cadabra2
-7.95 MiB cadabra2 http://cadabra.science
-easystroke 1425.62 KiB http://easystroke.sourceforge.net/
-anki 29.01 MiB https://ankisrs.net
-github-desktop-bin 224.86 MiB https://desktop.github.com
+## Internet
+
+- [networkmanager](https://www.archlinux.org/packages/extra/x86_64/networkmanager) 15.36MiB
+- [firefox](https://www.archlinux.org/packages/extra/x86_64/firefox) 187.79MiB
+- [brave-bin](https://aur.archlinux.org/packages/brave-bin) 241.53 MiB
+
+## Utilidades
+
+- [`yay`](https://aur.archlinux.org/packages/yay) 7.97MiB
+- [`linux-firmware`](https://www.archlinux.org/packages/core/any/linux-firmware) 514.04MiB
+- [`intel-media-driver`](https://www.archlinux.org/packages/community/x86_64/intel-media-driver) 34.99MiB
+- [`nvidia-utils`](https://archlinux.org/packages/extra/x86_64/nvidia-utils) MiB
+- [openssh](https://www.archlinux.org/packages/core/x86_64/openssh) 5.20MiB
+- [`rar`](https://aur.archlinux.org/packages/rar) 1185.71KiB
+- [`p7zip`](https://archlinux.org/packages/extra/x86_64/p7zip) 6.09 MiB
+- [curl](https://www.archlinux.org/packages/core/x86_64/curl) 1647.57KiB
+- [`httpie`](https://archlinux.org/packages/community/any/httpie) MiB
+- [`curlie`](https://archlinux.org/packages/community/x86_64/curlie) MiB
+- [`pdfarranger`](https://archlinux.org/packages/community/any/pdfarranger) 279.30 KiB
+
+## Desarrollo
+
+- [`git`](https://www.archlinux.org/packages/extra/x86_64/git) 38.36MiB
+- [`github-cli`](https://archlinux.org/packages/community/x86_64/github-cli) 19.22 MiB
+- [`cmake`](https://www.archlinux.org/packages/extra/x86_64/cmake) 39.25MiB
+- [`docker`](https://www.archlinux.org/packages/community/x86_64/docker) 264.44MiB
+- [`act`](https://aur.archlinux.org/packages/act) 15.38 MiB
+- [`gitlab-runner`](https://archlinux.org/packages/community/x86_64/gitlab-runner) 44.10 MiB
+- [`github-actions-bin`](https://aur.archlinux.org/packages/github-actions-bin) 197.57 MiB
+- [`mongodb-bin`](https://aur.archlinux.org/packages/mongodb-bin) 128.49MiB
+- [`mongodb-tools-bin`](https://aur.archlinux.org/packages/mongodb-tools-bin) 85.91MiB
+
+## Documentos y textos
+
+- [`nano`](https://archlinux.org/packages/core/x86_64/nano) 2.26 MiB
+- [`emacs-lucid`](https://aur.archlinux.org/packages/emacs-lucid) 126.96MiB
+- [`vscodium-bin`](https://aur.archlinux.org/packages/vscodium-bin) 238.55MiB
+- [`visual-studio-code-bin`](https://aur.archlinux.org/packages/visual-studio-code-bin) 245.00 MiB
+- [`zathura`](https://www.archlinux.org/packages/community/x86_64/zathura) 563.38KiB
+- [`zathura-djvu`](https://www.archlinux.org/packages/community/x86_64/zathura-djvu) 27.23KiB
+- [`zathura-pdf-poppler`](https://www.archlinux.org/packages/community/x86_64/zathura-pdf-poppler) 23.22KiB
+
+# Paquete de la versión completa
+
+## Ciencia
+
+- [`racket`](https://www.archlinux.org/packages/community/x86_64/racket) 457.36MiB
+- [`rstudio-desktop-bin`](https://aur.archlinux.org/packages/rstudio-desktop-bin) 487.40MiB
+- [`octave`](https://www.archlinux.org/packages/community/x86_64/octave) 64.20 MiB
+- [`mathpix-snipping-tool`](https://aur.archlinux.org/packages/mathpix-snipping-tool) 5.13MiB
+- [`kotlin`](https://archlinux.org/packages/community/any/kotlin) MiB
+- [`sagemath`](https://www.archlinux.org/packages/community/x86_64/sagemath) 416.59MiB
+- [`julia`](https://www.archlinux.org/packages/community/x86_64/julia) 198.22MiB
+- [`fricas`](https://aur.archlinux.org/packages/fricas) 145.99MiB
+- [`r`](https://www.archlinux.org/packages/extra/x86_64/r) 61.81MiB
+- [`miniconda3`](https://aur.archlinux.org/packages/miniconda3) 387.19MiB
+- [`python-poetry`](https://archlinux.org/packages/community/any/python-poetry) 1889.34 KiB
+- [`cadabra2`](https://aur.archlinux.org/packages/cadabra2) 7.95 MiB
+- [`texlive-core`](https://www.archlinux.org/packages/extra/any/texlive-core) 396.52MiB
+
+## Otros
+
+- [`ffmpeg`](https://archlinux.org/packages/extra/x86_64/ffmpeg) 32.37 MiB
+- [`blender`](https://archlinux.org/packages/community/x86_64/blender) 286.24 MiB
+- [`inkscape`](https://www.archlinux.org/packages/extra/x86_64/inkscape) 154.70 MiB
+- [`openboard`](https://aur.archlinux.org/packages/openboard) 56.28MiB
+- [`xournalpp`](https://archlinux.org/packages/community/x86_64/xournalpp) 4.24 MiB
+- [`xdman`](https://aur.archlinux.org/packages/xdman) 81.94 MiB
+- [`mat2`](https://archlinux.org/packages/community/any/mat2) 265.20 KiB
+- [`imagine-git`](https://aur.archlinux.org/packages/imagine-git) 181.61 MiB
+- [`okular`](https://archlinux.org/packages/extra/x86_64/okular) 15.80 MiB
+- [`mariadb`](https://archlinux.org/packages/extra/x86_64/mariadb) MiB
+- [`postgresql`](https://archlinux.org/packages/extra/x86_64/postgresql) MiB
+- [`github-desktop-bin`](https://aur.archlinux.org/packages/github-desktop-bin) 224.86 MiB
+- [`easystroke`](https://aur.archlinux.org/packages/easystroke) 1425.62 KiB
+- [`anki`](https://archlinux.org/packages/community/x86_64/anki) 29.01 MiB
+- [`noto-fonts`](https://www.archlinux.org/packages/extra/any/noto-fonts) 91.19MiB
+- [`ttf-monaco`](https://aur.archlinux.org/packages/ttf-monaco) 79.00KiB
+- [`otf-san-francisco`](https://aur.archlinux.org/packages/otf-san-francisco) 7.06 MiB
+- [`texlive-fontsextra`](https://www.archlinux.org/packages/extra/any/texlive-fontsextra) 1202.02MiB
+- [`ttf-ms-fonts`](https://aur.archlinux.org/packages/ttf-ms-fonts) 5.42MiB
+
+## Comunicaciones
+
+- [`telegram-desktop`](https://www.archlinux.org/packages/community/x86_64/telegram-desktop) 43.41MiB
+- [`discord`](https://archlinux.org/packages/community/x86_64/discord) 171.34 MiB
+- [`whatsdesk-bin`](https://aur.archlinux.org/packages/whatsdesk-bin) 174.00 MiB
+- [`signal-desktop`](https://archlinux.org/packages/community/x86_64/signal-desktop) 318.37 MiB
+- [`element-desktop`](https://archlinux.org/packages/community/x86_64/element-desktop) 28.18 MiB
+- [`criptext-bin`](https://aur.archlinux.org/packages/criptext-bin) 310.40 MiB
+- [`zoom`](https://aur.archlinux.org/packages/zoom) 177.93 MiB
+
+## Multimedia
+
+- [svp](https://aur.archlinux.org/packages/svp) 37.85 MiB
+- [obs-studio](https://www.archlinux.org/packages/community/x86_64/obs-studio) 13.48MiB
