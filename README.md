@@ -2,7 +2,7 @@ Four Leaves ISO
 ===============
 
 <div align="center">
-  <img alt="LaTeX" height="124px" vspace="" hspace="25" src="syslinux/splash-fourleaves.png">
+  <img alt="LaTeX" height="360px" vspace="" hspace="25" src="syslinux/splash-fourleaves.png">
 </div>
 
 Esta imagen debe [copiarse](https://github.com/jsamr/bootiso) en una memoria USB
@@ -13,6 +13,8 @@ Instalación de la herramienta [`archiso`](https://gitlab.archlinux.org/archlinu
 
 ```console
 ~ » yay -Sy archiso
+~ » git clone --filter=blob:none --depth=1 git@github.com:four-leaves/four-leaves-iso.git
+~ » sudo mkarchiso -v -w /archiso-tmp -o . four-leaves-iso
 ```
 
 Estructura del directorio `/usr/share/archiso/configs`
@@ -467,6 +469,7 @@ Include = /etc/pacman.d/mirrorlist
 - [`octave`](https://www.archlinux.org/packages/community/x86_64/octave) 64.20 MiB
 - [`mathpix-snipping-tool`](https://aur.archlinux.org/packages/mathpix-snipping-tool) 5.13MiB
 - [`kotlin`](https://archlinux.org/packages/community/any/kotlin) MiB
+- [`rust`](https://archlinux.org/packages/extra/x86_64/rust) 491.00 MiB
 - [`sagemath`](https://www.archlinux.org/packages/community/x86_64/sagemath) 416.59MiB
 - [`julia`](https://www.archlinux.org/packages/community/x86_64/julia) 198.22MiB
 - [`fricas`](https://aur.archlinux.org/packages/fricas) 145.99MiB
@@ -492,6 +495,8 @@ Include = /etc/pacman.d/mirrorlist
 - [`github-desktop-bin`](https://aur.archlinux.org/packages/github-desktop-bin) 224.86 MiB
 - [`easystroke`](https://aur.archlinux.org/packages/easystroke) 1425.62 KiB
 - [`anki`](https://archlinux.org/packages/community/x86_64/anki) 29.01 MiB
+- [`languagetool`](https://archlinux.org/packages/community/any/languagetool) 288.96 MiB
+- [`jabref`](https://aur.archlinux.org/packages/jabref) 211.91 MiB
 - [`noto-fonts`](https://www.archlinux.org/packages/extra/any/noto-fonts) 91.19MiB
 - [`ttf-monaco`](https://aur.archlinux.org/packages/ttf-monaco) 79.00KiB
 - [`otf-san-francisco`](https://aur.archlinux.org/packages/otf-san-francisco) 7.06 MiB
